@@ -124,9 +124,9 @@ class CS_Admin {
 				<table class='widefat striped'>
 					<thead><tr><th>Domaine</th><th>Score</th></tr></thead>
 					<tbody>
-					<?php foreach ( $report['categories'] as $key => $data ) : ?>
-						<tr><td><?php echo esc_html( isset( $cats[ $key ] ) ? $cats[ $key ] : $key ); ?></td><td><?php echo (int) $data['score']; ?>/100</td></tr>
-					<?php endforeach; ?>
+						<?php foreach ( $report['categories'] as $key => $data ) : ?>
+							<tr><td><?php echo esc_html( isset( $cats[ $key ] ) ? $cats[ $key ] : $key ); ?></td><td><?php echo (int) $data['score']; ?>/100</td></tr>
+						<?php endforeach; ?>
 					</tbody>
 				</table>
 			<?php endif; ?>
@@ -141,7 +141,7 @@ class CS_Admin {
 		?>
 		<div class='wrap'>
 			<h1>CLOUX SEO — Audit multi-domaines</h1>
-			<p>Analyse n’importe quel domaine : HTML, metas, canonique, JSON-LD, robots.txt, sitemap, llms.txt, agents IA. Les contrôles basés sur la base WordPress (metas Rank Math, auteurs) ne s’appliquent qu’au site local.</p>
+			<p>Analyse n’importe quel domaine : HTML, metas, canonique, JSON-LD, robots.txt, sitemap, llms.txt, agents IA. Les contrôles basés sur la base WordPress (metas Yoast ou Rank Math, auteurs) ne s’appliquent qu’au site local.</p>
 			<p>
 				<input type='url' id='cloux-seo-domain' class='regular-text' placeholder='https://exemple.fr'>
 				<button id='cloux-seo-add' class='button button-primary'>Ajouter le domaine</button>
@@ -276,7 +276,7 @@ class CS_Admin {
 						<th scope='row'><label for='cs-schema'>Schema JSON-LD</label></th>
 						<td>
 							<select id='cs-schema' name='cloux_seo_options[schema_mode]'>
-								<option value='auto' <?php selected( $o['schema_mode'], 'auto' ); ?>>Auto (désactivé si Rank Math actif)</option>
+								<option value='auto' <?php selected( $o['schema_mode'], 'auto' ); ?>>Auto (désactivé si Yoast ou Rank Math actif)</option>
 								<option value='on' <?php selected( $o['schema_mode'], 'on' ); ?>>Toujours actif</option>
 								<option value='off' <?php selected( $o['schema_mode'], 'off' ); ?>>Désactivé</option>
 							</select>

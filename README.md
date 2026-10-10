@@ -20,7 +20,7 @@ Extension WordPress SEO complète, développée pour cloux.net et utilisable sur
 2. Activer l’extension : les règles de réécriture (llms.txt) sont créées à l’activation.
 3. Configurer identité, modules et agents IA dans CLOUX SEO > Réglages.
 
-Compatibilité Rank Math : en mode auto, le module Schema se désactive si Rank Math est actif (doublons évités) ; l’audit lit les metas rank_math_description. Les autres modules sont complémentaires.
+Compatibilité Yoast et Rank Math : en mode auto, le module Schema se désactive si Yoast ou Rank Math est actif (doublons de JSON-LD évités) ; l’audit lit les metas Yoast (_yoast_wpseo_title, _yoast_wpseo_metadesc) et Rank Math. Les autres modules sont complémentaires.
 
 ## Points d’entrée générés
 
@@ -33,7 +33,7 @@ Compatibilité Rank Math : en mode auto, le module Schema se désactive si Rank 
 
 Chaque contrôle renvoie : statut (pass, warn, fail), poids, severity, constat, recommandation et vérification reproductible (commande curl ou vérification dans l’admin). Score global et par domaine de contrôle : titres, contenu, technique, Schema, GEO, E-E-A-T. Audit complet automatique chaque semaine (WP-Cron).
 
-L’audit multi-domaines exécute la batterie de contrôles applicables à distance (HTML, metas, canonique, JSON-LD, robots.txt, sitemap, llms.txt) sur n’importe quel domaine ; les contrôles basés sur la base WordPress (metas Rank Math, auteurs) ne s’appliquent qu’au site local.
+L’audit multi-domaines exécute la batterie de contrôles applicables à distance (HTML, metas, canonique, JSON-LD, robots.txt, sitemap, llms.txt) sur n’importe quel domaine ; les contrôles basés sur la base WordPress (metas Yoast ou Rank Math, auteurs) ne s’appliquent qu’au site local.
 
 ## Structure
 

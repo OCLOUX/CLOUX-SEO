@@ -20,14 +20,17 @@ class CS_Schema {
 		if ( 'off' === $mode ) {
 			return false;
 		}
-		if ( 'auto' === $mode && $this->rank_math_active() ) {
+		if ( 'auto' === $mode && $this->seo_plugin_active() ) {
 			return false;
 		}
 		return true;
 	}
 
-	private function rank_math_active() {
-		return defined( 'RANK_MATH_VERSION' ) || class_exists( 'RankMath' );
+	private function seo_plugin_active() {
+		return defined( 'RANK_MATH_VERSION' )
+			|| class_exists( 'RankMath' )
+			|| defined( 'WPSEO_VERSION' )
+			|| class_exists( 'WPSEO_Options' );
 	}
 
 	public function output() {

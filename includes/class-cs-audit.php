@@ -117,7 +117,13 @@ class CS_Audit {
 		$n          = count( $posts );
 
 		foreach ( $posts as $post ) {
-			$title = get_the_title( $post );
+			$title = (string) get_post_meta( $post->ID, 'rank_math_title', true );
+			if ( '' === $title ) {
+				$title = (string) get_post_meta( $post->ID, '_yoast_wpseo_title', true );
+			}
+			if ( '' === $title ) {
+				$title = get_the_title( $post );
+			}
 			$len   = function_exists( 'mb_strlen' ) ? mb_strlen( $title ) : strlen( $title );
 			if ( $len < 20 || $len > 70 ) {
 				$bad_titles++;
@@ -142,7 +148,7 @@ class CS_Audit {
 
 		$findings[] = self::finding( 'titles-posts', 'titles', 'Longueur des titres d’articles', ( 0 === $bad_titles ) ? 'pass' : ( ( $bad_titles >= $n ) ? 'fail' : 'warn' ), 3, $bad_titles . '/' . $n . ' titres hors plage 20-70 caractères.', 'Viser des titres de 30 à 60 caractères.', 'Recompter la longueur des titres des 5 derniers articles.' );
 
-		$findings[] = self::finding( 'desc-posts', 'titles', 'Meta description par article', ( 0 === $no_desc ) ? 'pass' : ( ( $no_desc >= $n ) ? 'fail' : 'warn' ), 4, $no_desc . '/' . $n . ' articles sans meta description.', 'Renseigner la meta description (Rank Math) ou l’extrait de chaque article.', 'Champ Rank Math « Description » vide sur l’article.' );
+		$findings[] = self::finding( 'desc-posts', 'titles', 'Meta description par article', ( 0 === $no_desc ) ? 'pass' : ( ( $no_desc >= $n ) ? 'fail' : 'warn' ), 4, $no_desc . '/' . $n . ' articles sans meta description.', 'Renseigner la meta description (Yoast ou Rank Math) ou l’extrait de chaque article.', 'Champ Yoast « Description SEO » ou Rank Math « Description » vide sur l’article.' );
 
 		$findings[] = self::finding( 'author-bio', 'eeat', 'Biographies d’auteurs', ( 0 === $no_bio ) ? 'pass' : ( ( $no_bio >= $n ) ? 'fail' : 'warn' ), 2, $no_bio . '/' . $n . ' articles dont l’auteur n’a pas de biographie.', 'Remplir la biographie du profil auteur (E-E-A-T).', 'Profil utilisateur, champ Biographie vide.' );
 
@@ -280,7 +286,7 @@ class CS_Audit {
 			$status = ( count( $types ) >= 2 ) ? 'pass' : 'warn';
 			$detail = 'Types détectés : ' . implode( ', ', $types );
 		}
-		$findings[] = self::finding( 'jsonld', 'schema', 'Données structurées JSON-LD', $status, 4, $detail, 'Générer Organization, WebSite, Article et BreadcrumbList (Rank Math ou module Schema).', 'Outil Rich Results de Google.' );
+		$findings[] = self::finding( 'jsonld', 'schema', 'Données structurées JSON-LD', $status, 4, $detail, 'Générer Organization, WebSite, Article et BreadcrumbList (Yoast, Rank Math ou module Schema).', 'Outil Rich Results de Google.' );
 
 		$p    = wp_parse_url( $url );
 		$root = $p['scheme'] . '://' . $p['host'] . ( isset( $p['port'] ) ? ':' . $p['port'] : '' ) . '/';

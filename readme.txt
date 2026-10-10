@@ -20,7 +20,7 @@ CLOUX SEO regroupe les briques SEO essentielles en une extension unique :
 * Signaux E-E-A-T : encart auteur, sameAs, dates de mise à jour
 * Rapports exportables en CSV et JSON, audit automatique hebdomadaire
 
-Compatible Rank Math (pas de doublon de Schema en mode auto).
+Compatible Yoast et Rank Math (pas de doublon de Schema en mode auto).
 
 == Installation ==
 
@@ -29,6 +29,9 @@ Compatible Rank Math (pas de doublon de Schema en mode auto).
 3. Renseigner CLOUX SEO > Réglages (identité, sameAs, agents IA).
 
 == Changelog ==
+
+= 1.1.0 =
+* Compatibilité Yoast : détection auto du module Schema, lecture des titres et metas Yoast.
 
 = 1.0.0 =
 * Version initiale : audit self et multi-domaines, Schema, GEO/AEO, E-E-A-T, exports.
