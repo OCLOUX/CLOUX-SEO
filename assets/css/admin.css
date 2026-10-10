@@ -1,0 +1,62 @@
+.cloux-seo-score {
+	width: 130px;
+	height: 130px;
+	border-radius: 50%;
+	background: conic-gradient(#00a32a calc(var(--score, 0) * 1%), #dcdcde 0);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 16px 0;
+}
+.cloux-seo-score span {
+	background: #fff;
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 18px;
+	font-weight: 600;
+}
+.cloux-seo-table td {
+	vertical-align: top;
+}
+.cloux-seo-badge {
+	display: inline-block;
+	padding: 2px 10px;
+	border-radius: 3px;
+	font-weight: 600;
+	white-space: nowrap;
+}
+.cloux-seo-badge-pass {
+	background: #e6f4ea;
+	color: #1a7f37;
+}
+.cloux-seo-badge-warn {
+	background: #fcf0e1;
+	color: #996800;
+}
+.cloux-seo-badge-fail {
+	background: #fbd3d4;
+	color: #a02223;
+}
+.cloux-seo-row-fail td {
+	background: #fff6f6;
+}
+.cloux-seo-author-box {
+	display: flex;
+	gap: 16px;
+	margin: 2em 0;
+	padding: 16px;
+	border: 1px solid #e2e4e7;
+	border-radius: 4px;
+}
+.cloux-seo-author-name {
+	font-weight: 700;
+	display: block;
+}
+.cloux-seo-dates {
+	color: #666;
+	font-size: 0.9em;
+}
