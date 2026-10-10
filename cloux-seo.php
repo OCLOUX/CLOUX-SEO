@@ -2,8 +2,8 @@
 /**
  * Plugin Name: CLOUX SEO
  * Plugin URI:  https://github.com/OCLOUX/CLOUX-SEO
- * Description: Suite SEO pour WordPress : audit technique du site et de n’importe quel domaine externe, Schema.org JSON-LD, GEO/AEO (llms.txt, ai-catalog.json, robots.txt agents IA), signaux E-E-A-T, scoring 0-100 et exports CSV/JSON. Complémentaire de Rank Math.
- * Version:     1.0.0
+ * Description: Suite SEO pour WordPress : audit technique du site et de n’importe quel domaine externe, Schema.org JSON-LD, GEO/AEO (llms.txt, ai-catalog.json, robots.txt agents IA), signaux E-E-A-T, scoring 0-100 et exports CSV/JSON. Complémentaire de Yoast et Rank Math.
+ * Version:     1.1.0
  * Author:      OCLOUX
  * Author URI:  https://www.cloux.net
  * License:     GPL-2.0-or-later
@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'CLOUX_SEO_VERSION', '1.0.0' );
+define( 'CLOUX_SEO_VERSION', '1.1.0' );
 define( 'CLOUX_SEO_FILE', __FILE__ );
 define( 'CLOUX_SEO_DIR', plugin_dir_path( __FILE__ ) );
 define( 'CLOUX_SEO_URL', plugin_dir_url( __FILE__ ) );
