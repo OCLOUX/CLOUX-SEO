@@ -3,7 +3,7 @@
  * Plugin Name: CLOUX SEO
  * Plugin URI:  https://github.com/OCLOUX/CLOUX-SEO
  * Description: Suite SEO pour WordPress : audit technique du site et de n’importe quel domaine externe, Schema.org JSON-LD, GEO/AEO (llms.txt, ai-catalog.json, robots.txt agents IA), signaux E-E-A-T, scoring 0-100 et exports CSV/JSON. Complémentaire de Yoast et Rank Math.
- * Version:     1.1.0
+ * Version:     1.1.1
  * Author:      OCLOUX
  * Author URI:  https://www.cloux.net
  * License:     GPL-2.0-or-later
@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'CLOUX_SEO_VERSION', '1.1.0' );
+define( 'CLOUX_SEO_VERSION', '1.1.1' );
 define( 'CLOUX_SEO_FILE', __FILE__ );
 define( 'CLOUX_SEO_DIR', plugin_dir_path( __FILE__ ) );
 define( 'CLOUX_SEO_URL', plugin_dir_url( __FILE__ ) );
@@ -64,6 +64,15 @@ final class CLOUX_SEO {
 		$this->admin   = new CS_Admin( $this );
 
 		add_action( 'cloux_seo_weekly_audit', array( $this, 'cron_audit' ) );
+		add_action( 'wp_head', array( $this, 'prevent_duplicate_schema' ), 19 );
+	}
+
+	/** Keep the existing SEO plugin as the sole owner of the core schema graph. */
+	public function prevent_duplicate_schema() {
+		if ( defined( 'WPSEO_VERSION' ) || class_exists( 'WPSEO_Options' )
+			|| defined( 'RANK_MATH_VERSION' ) || class_exists( 'RankMath' ) ) {
+			remove_action( 'wp_head', array( $this->schema, 'output' ), 20 );
+		}
 	}
 
 	public function cron_audit() {
@@ -125,4 +134,5 @@ final class CLOUX_SEO {
 	}
 }
 
-CLOUX_SEO::instance();
+// Detect other SEO plugins only after all plugin files have been loaded.
+add_action( 'plugins_loaded', array( 'CLOUX_SEO', 'instance' ), 20 );
