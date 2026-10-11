@@ -1,6 +1,6 @@
 # CLOUX-SEO
 
-Extension WordPress SEO complète, développée pour cloux.net et utilisable sur n’importe quel site WordPress. Équivalent WordPress du projet claude-seo (AgriciDaniel) : les sub-skills deviennent des modules PHP natifs pilotés depuis l’admin, sans dépendance externe ni clé API.
+Extension WordPress SEO , développée pour cloux.net et utilisable sur n’importe quel site WordPress. Très inspiré de  claude-seo (Claude Code) 
 
 ## Modules
 
